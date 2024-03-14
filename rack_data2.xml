@@ -1,0 +1,40 @@
+<parking>
+	<space security="1" light="[0-X]" enclosed="[True-False]" pedestrians_rate="[0-X]">
+	<!--security: derived from other variables
+		light: light level at a given time
+		enclosed: presence of physical barriers around the space
+		pedestrians_rate: pedestrian count in a given hour
+	-->
+		<loop security="2" thickness="[0-X]" mount_quality="[0-4]">
+		<!--security: derived from other variables
+			thickness: width of bar making up the loop
+			mount_quality: subjective "strength" of attachment to space based on mount presence and method
+		-->
+			<lock security="3">
+			<!--security: derived from https://www.soldsecure.com/ ratings if available.
+							otherwise, cable locks are assigned "1", folding locks "2",
+							chain locks "3" and u locks "4"
+			-->
+				<bike security="4" value="[0-X]" locked_parts="[1-3]"/>
+				<!--security: derived from other variables
+					value: dollar value of bike
+					locked_parts: how many parts, out of the frame and the wheels, are locked
+				-->
+			</lock>
+		</loop>
+		<loop security="2">
+			<lock security="0">
+				<bike security="1" />
+			</lock>
+			<lock security="4">
+				<bike security="2" />
+			</lock>
+		</loop>
+		<loop security="2">
+			<lock security="1">
+				<bike security="4" />
+				<bike security="3" />
+			</lock>
+		</loop>
+	</space>
+</parking>
